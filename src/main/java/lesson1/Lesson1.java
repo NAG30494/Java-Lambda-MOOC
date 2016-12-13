@@ -40,11 +40,14 @@ public class Lesson1 {
      * Create a string that consists of the first letter of each word in the list
      * of Strings provided.
      */
-    private void exercise1() {
+    public String exercise1() {
         List<String> list = Arrays.asList(
                 "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
     /* YOUR CODE HERE */
+      StringBuilder sb = new StringBuilder();
+      list.forEach(s -> sb.append(s.charAt(0)));
+      return sb.toString();
 
     }
 
@@ -53,11 +56,13 @@ public class Lesson1 {
      * <p>
      * Remove the words that have odd lengths from the list.
      */
-    private void exercise2() {
+    public List<String> exercise2() {
         List<String> list = new ArrayList<>(Arrays.asList(
                 "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-    /* YOUR CODE HERE */
+      list.removeIf(s -> (s.length() % 2 == 1));
+      return list;
+
     }
 
     /**
@@ -65,11 +70,11 @@ public class Lesson1 {
      * <p>
      * Replace every word in the list with its upper case equivalent.
      */
-    private void exercise3() {
+    public List<String> exercise3() {
         List<String> list = new ArrayList<>(Arrays.asList(
                 "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
-
-    /* YOUR CODE HERE */
+      list.replaceAll(String::toUpperCase);
+      return list;
     }
 
     /**
@@ -78,13 +83,15 @@ public class Lesson1 {
      * Convert every key-value pair of the map into a string and append them all
      * into a single string, in iteration order.
      */
-    private void exercise4() {
-        Map<String, Integer> map = new TreeMap<>();
-        map.put("c", 3);
-        map.put("b", 2);
-        map.put("a", 1);
+    public String exercise4() {
+      Map<String, Integer> map = new TreeMap<>();
+      map.put("c", 3);
+      map.put("b", 2);
+      map.put("a", 1);
 
-    /* YOUR CODE HERE */
+      StringBuilder sb = new StringBuilder();
+      map.forEach((k, v) -> sb.append(k + v));
+      return sb.toString();
     }
 
     /**
@@ -92,10 +99,12 @@ public class Lesson1 {
      * <p>
      * Create a new thread that prints the numbers from the list.
      */
-    private void exercise5() {
+    public void exercise5() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    /* YOUR CODE HERE */
+      Runnable r = () -> list.forEach(System.out::print);
+      r.run();
+
     }
 
     /**
